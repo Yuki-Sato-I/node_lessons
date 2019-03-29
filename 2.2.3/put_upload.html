@@ -1,0 +1,32 @@
+<html>
+<body>
+  <form id="form">
+    <input type="file" id="userfile" name="userfile"><br>
+    <input type="submit">
+  </form>
+</body>
+<script>
+  (function () {
+    var userfile = document.getElementById('userfile'),
+    form = document.getElementById('form'),
+    file;
+
+    userfile.addEventListener('change', function (){
+      file = this.files[0];
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (file) {
+        var xhr = new XMLHttpRequest();
+        xhr.file = file;
+        xhr.open('put', window.location, true);
+        xhr.setRequestHeader('x-uploadedfilename', file.filename || file.name);
+        xhr.send(file);
+        file='';
+        form.reset();
+      }
+    });
+  })(); //func()();生成と同時に実行
+</script>
+</html>

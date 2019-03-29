@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect": "^2.6.1",
+    "formidable": "^1.0.11",
     "socket.io": "^2.2.0"
   }
 }
